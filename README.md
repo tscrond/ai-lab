@@ -2,11 +2,20 @@
 
 This is a repo for storing useful scripts/automation/configs in the topic of my on-prem AI Lab.
 
+## Lab Features
+
+Currently installed software:
+
+- [x] Ollama with couple of models running
+- [x] Open WebUI for chatting
+- [ ] Stable diffusion software integrated with Open WebUI
+
 ## What’s Inside?
 
 - **Scripts**: Handy command-line tools for common tasks.
 - **Docker Configs**: Quick setups to get containers up and running without the fuss.
 - **Automation Snippets**: A few nifty automation tricks to save time.
+- **and more..."
 
 ## Getting Started
 
