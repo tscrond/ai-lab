@@ -1,0 +1,58 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama/models
+    environment:
+      - OLLAMA_ACCELERATOR=cuda
+      - OLLAMA_USE_CUDA=1
+      - NVIDIA_VISIBLE_DEVICES=all
+      - GIN_MODE=release
+      - OLLAMA_MODEL_DIR=/root/.ollama/models
+      - OLLAMA_HOST=0.0.0.0
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 32GB
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+      - ollama-network
+    restart: unless-stopped
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    container_name: open-webui
+    volumes:
+      - open-webui:/app/backend/data
+    depends_on:
+      - ollama
+    ports:
+      - ${OPEN_WEBUI_PORT-3000}:8080
+    environment:
+      - 'DEFAULT_LOCALE=en'
+      - 'ENABLE_OPENAI_API=False'
+      - 'ENABLE_COMMUNITY_SHARING=False'
+      - 'OLLAMA_BASE_URL=http://ollama:11434/'
+      - 'WEBUI_SECRET_KEY='
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks:
+      - ollama-network
+    restart: unless-stopped
+
+networks:
+  ollama-network:
+
+volumes:
+  open-webui:
+    driver: local
+  ollama-models:
+    driver: local
