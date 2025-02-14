@@ -1,3 +1,23 @@
+> [!IMPORTANT]
+> Tested only on Ubuntu 24.04, PRs for other systems compatibility highly encouraged ;)
+
+Distro info:
+```
+PRETTY_NAME="Ubuntu 24.04.2 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.2 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+```
+
 # On-Prem AI Lab Automation Tools
 
 This is a repo for storing useful scripts/automation/configs in the topic of my on-prem AI Lab.
@@ -19,9 +39,9 @@ Currently installed software:
 
 ## Getting Started
 
-0. Configure the host GPU (preferably CUDA)
-  
-  `TODO: create scripts to automate`   
+0. **Configure the host GPU (preferably CUDA)**
+    This step is the most pain-in-the-ass part, good luck ;>
+    `TODO: create scripts to automate`   
 
 1. **Clone the Repo:**
    ```bash
@@ -34,9 +54,9 @@ Currently installed software:
     ```
 3. **Start AI Stack with chosen stable-diffusion UI (auto,auto-cpu,comfy,comfy-cpu):**
     ```bash
-    ./ai-stack run auto
+    ./ai-stack.sh run auto
     ```
-4. Configure Open WebUI to use Image Generation Backend (and other params)
+4. **Configure Open WebUI to use Image Generation Backend (and other params)**
 
     Steps to configure:
     - Go to `Settings>Admin Settings>Images`
