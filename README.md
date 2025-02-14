@@ -15,7 +15,7 @@ Currently installed software:
 - **Scripts**: Handy command-line tools for common tasks.
 - **Docker Configs**: Quick setups to get containers up and running without the fuss.
 - **Automation Snippets**: A few automation scripts to save time.
-- **and more..."
+- **and more...**
 
 ## Getting Started
 
