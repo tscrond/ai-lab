@@ -93,3 +93,5 @@ If you've got something cool to add, just:
 
 Everything here is under the MIT License. Check out [LICENSE](LICENSE) for more details.
 
+***Thanks to @AbdBarho (https://github.com/AbdBarho/stable-diffusion-webui-docker/tree/master) for the nice Docker Compose config ;)***
+
