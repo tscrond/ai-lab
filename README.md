@@ -19,6 +19,10 @@ Currently installed software:
 
 ## Getting Started
 
+0. Configure the host GPU (preferably CUDA)
+  
+  `TODO: create scripts to automate`   
+
 1. **Clone the Repo:**
    ```bash
    git clone git@github.com:tscrond/ai-lab.git
@@ -34,25 +38,25 @@ Currently installed software:
     ```
 4. Configure Open WebUI to use Image Generation Backend (and other params)
 
-Steps to configure:
-- Go to `Settings>Admin Settings>Images`
-- Insert your URL (probably `http://auto:7860`
-- Set other parameters:
+    Steps to configure:
+    - Go to `Settings>Admin Settings>Images`
+    - Insert your URL (probably `http://auto:7860`
+    - Set other parameters:
 
-    ```
-    Set Sampler
-    DPM++ 2M
-    Set Scheduler
-    Karras
-    Set CFG Scale
-    7
-    Set Default Model
-    Realistic_Vision_V5.1.ckpt [089b46befc]
-    Set Image Size
-    1280x800
-    Set Steps
-    50
-    ```
+        ```
+        Set Sampler
+        DPM++ 2M
+        Set Scheduler
+        Karras
+        Set CFG Scale
+        7
+        Set Default Model
+        Realistic_Vision_V5.1.ckpt [089b46befc]
+        Set Image Size
+        1280x800
+        Set Steps
+        50
+        ```
 
 5. ***Enjoy!***
 
