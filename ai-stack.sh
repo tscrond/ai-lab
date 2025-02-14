@@ -7,6 +7,10 @@ help() { ## Show help
     | awk '{printf "\t%-30s %s\n", $1, substr($0, index($0, $3))}'
 }
 
+restart() { ## Restarts chosen compose app
+  docker compose restart ${1:-"auto"}
+}
+
 download() { ## Downloads stable diffusion models
   docker compose run --build download 
 }
