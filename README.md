@@ -29,6 +29,7 @@ Currently installed software:
 - [x] Ollama with couple of models running
 - [x] Open WebUI for chatting
 - [x] Stable diffusion software integrated with Open WebUI
+- [x] Web search integration with SearXNG
 
 ## What’s Inside?
 
@@ -48,15 +49,30 @@ Currently installed software:
    git clone git@github.com:tscrond/ai-lab.git
    cd ai-lab
    ```
-2. **Download stable diffusion models:**
+
+2. **Configure .env file:**
+
+  By default searxng listens on localhost, letsencrypt optional if you plan to configure it.
+
+  Workers/threads configuration depends on hardware you are using, the better hardware (CPU), the more you can set.
+
+  ```
+  SEARXNG_HOSTNAME=0.0.0.0
+  LETSENCRYPT_EMAIL=dupa@mail.com
+  
+  SEARXNG_UWSGI_WORKERS=7
+  SEARXNG_UWSGI_THREADS=7
+  ``` 
+
+3. **Download stable diffusion models:**
     ```bash
     ./ai-stack.sh download
     ```
-3. **Start AI Stack with chosen stable-diffusion UI (auto,auto-cpu,comfy,comfy-cpu):**
+4. **Start AI Stack with chosen stable-diffusion UI (auto,auto-cpu,comfy,comfy-cpu):**
     ```bash
     ./ai-stack.sh run auto
     ```
-4. **Configure Open WebUI to use Image Generation Backend (and other params)**
+5. **Configure Open WebUI to use Image Generation Backend (and other params)**
 
     Steps to configure:
     - Go to `Settings>Admin Settings>Images`
@@ -78,7 +94,7 @@ Currently installed software:
         50
         ```
 
-5. ***Enjoy!***
+6. ***Enjoy!***
 
 
 ## Want to Contribute?
