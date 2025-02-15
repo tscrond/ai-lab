@@ -40,6 +40,12 @@ Currently installed software:
 
 ## Getting Started
 
+Before starting, install `devbox` and `direnv`:
+
+- [Devbox install](https://jetify-com.vercel.app/docs/devbox/installing_devbox/)
+- [Direnv install](https://direnv.net/#basic-installation)
+
+
 0. **Configure the host GPU (preferably CUDA)**
     This step is the most pain-in-the-ass part, good luck ;>
     `TODO: create scripts to automate`   
