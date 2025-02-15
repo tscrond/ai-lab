@@ -72,11 +72,11 @@ Before starting, install `devbox` and `direnv`:
 
 3. **Download stable diffusion models:**
     ```bash
-    ./ai-stack.sh download
+    ai-stack download
     ```
 4. **Start AI Stack with chosen stable-diffusion UI (auto,auto-cpu,comfy,comfy-cpu):**
     ```bash
-    ./ai-stack.sh run auto
+    ai-stack run auto
     ```
 5. **Configure Open WebUI to use Image Generation Backend (and other params)**
 
