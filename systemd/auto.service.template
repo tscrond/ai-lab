@@ -1,0 +1,15 @@
+[Unit]
+Description=Docker Compose auto profile
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=${PROJECT_WORKDIR}
+ExecStart=/usr/bin/docker compose --profile auto up -d --remove-orphans
+ExecStop=/usr/bin/docker compose --profile auto down
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+
