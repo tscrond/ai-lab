@@ -1,0 +1,57 @@
+#!/bin/bash
+
+help() { ## Show help
+  echo "Usage: $0 <command>"
+  grep -E '^[a-zA-Z0-9_\-]+ *\(\) *{ *##' "$0" \
+    | sed 's/() *{ *## */ - /g' \
+    | awk '{printf "\t%-30s %s\n", $1, substr($0, index($0, $3))}'
+}
+
+restart() { ## Restarts chosen compose app
+  docker compose restart ${1:-"auto"}
+}
+
+setup() { ## Setup a docker stack so that it persists between reboots
+  export $(cat .env.auto | xargs)
+  
+  envsubst < ${PROJECT_WORKDIR}/systemd/auto.service.template | sudo tee /etc/systemd/system/auto.service
+
+  sudo systemctl daemon-reexec
+  sudo systemctl daemon-reload
+  sudo systemctl enable --now auto.service
+}
+
+download() { ## Downloads stable diffusion models
+  docker compose run --build download 
+}
+
+run() { ## Run whole stack
+  profile=${1:-"auto"}
+  if [ "$profile" == "auto" ]; then
+    docker compose --profile auto up -d --build --remove-orphans
+  else
+    docker compose --profile "$profile" up -d --build --remove-orphans
+  fi
+}
+
+
+status() { ## Check status of docker services
+  choice=$(gum choose --header="Toggle verbose mode?" "yes" "no")
+
+  echo -e "Currently running services:
+  $(docker compose ps)" | gum pager 
+
+  if [[ "$choice" == "yes" ]]; then
+    docker compose stats --format table
+    if command -v nvidia-smi; then
+      watch -t -n 0.1 nvidia-smi
+    fi
+  fi
+}
+
+if [ $# -eq 0 ]; then
+  help
+  exit 1
+else
+  "$@"
+fi
